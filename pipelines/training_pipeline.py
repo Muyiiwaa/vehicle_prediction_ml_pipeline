@@ -5,10 +5,10 @@ from steps.evaluation import evaluate_model
 from steps.model_train import train_model
 
 
-@pipeline
+@pipeline(enable_cache=False)
 def training_pipelines(train_data_path: str) -> None:
     train_df = ingest_df(train_data_path)
-    clean_data(train_df)
-    train_model(train_df)
-    evaluate_model(train_df)
+    X_train, X_test, y_train, y_test = clean_data(train_df)
+    model = train_model(X_train, X_test, y_train, y_test)
+    rmse, mae = evaluate_model(model, X_test, y_test)
     

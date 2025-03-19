@@ -32,13 +32,16 @@ class DataPreprocessStrategy(DataHandlingStrategy):
     
 
     def handle_data(self, data:pd.DataFrame) -> Union[pd.DataFrame, pd.Series]:
-        """_method for preprocessing the data_
+        """_summary_
 
         Args:
-            data (_type_): _description_
+            data (pd.DataFrame): _description_
+
+        Raises:
+            err: _description_
 
         Returns:
-            pd.DataFrame: _description_
+            Union[pd.DataFrame, pd.Series]: _description_
         """
         try:
             # removed commas and changed the type of distance from str to float
